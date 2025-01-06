@@ -1,0 +1,48 @@
+@import "./base.css";
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-weight: normal;
+}
+.rounded-gradient {
+  background: linear-gradient(
+    to right,
+    var(--genz-color-gradient-1),
+    var(--genz-color-gradient-2)
+  );
+  border-radius: 15px;
+  color: var(--color-link-hover);
+  cursor: pointer;
+}
+
+.rounded-gradient:hover {
+  color: var(--color-link-hover);
+  background: linear-gradient(
+    to left,
+    var(--genz-color-gradient-1),
+    var(--genz-color-gradient-2)
+  );
+}
+a {
+  text-decoration: none;
+  color: black;
+  transition: 0.4s;
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--genz-color-brand-2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+}
