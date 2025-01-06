@@ -1,0 +1,4 @@
+const cart_vue_vue_type_style_index_0_scoped_7e87618f_lang = ".cart[data-v-7e87618f]{color:#000;margin:90px auto 0;position:relative;width:80%}.list[data-v-7e87618f]{width:60%}.summary[data-v-7e87618f]{box-shadow:0 3px 8px #0000003d;left:60%;padding:40px 20px;position:absolute;top:0;width:40%}.shiping-container[data-v-7e87618f],.subtotal[data-v-7e87618f]{align-items:center;display:flex;justify-content:space-between;margin-bottom:30px}.check[data-v-7e87618f]{background-color:#2e86ab;border:none;color:#fff;cursor:pointer;font-size:16px;padding:10px 0;width:100%}.head[data-v-7e87618f]{font-size:30px}.total[data-v-7e87618f]{font-size:18px;font-weight:600}h4[data-v-7e87618f]{font-size:15px}";
+
+export { cart_vue_vue_type_style_index_0_scoped_7e87618f_lang as c };
+//# sourceMappingURL=cart-styles-1.mjs-i8_erEHn.mjs.map

@@ -1,0 +1,4 @@
+const TopLanding_vue_vue_type_style_index_0_scoped_2f03d4cb_lang = "img[data-v-2f03d4cb]{height:100%;-o-object-fit:cover;object-fit:cover;width:100%}.land[data-v-2f03d4cb]{position:relative}.info[data-v-2f03d4cb]{background:radial-gradient(circle,#ffffff80 0,#fff0 70%);background-color:transparent;display:flex;justify-content:center;position:absolute;top:10px;width:100%}.inner[data-v-2f03d4cb]{align-items:center;display:flex;flex-direction:column}.product-name[data-v-2f03d4cb],.some-info[data-v-2f03d4cb]{color:#000;letter-spacing:.7px}.product-name[data-v-2f03d4cb]{font-size:1.875rem;font-weight:700}.some-info[data-v-2f03d4cb]{font-size:1.125rem;font-weight:600}.buy[data-v-2f03d4cb]{background-color:var(--genz-color-brand-1);border-radius:15px;color:#fff;cursor:pointer;margin-bottom:4px;padding:.1875rem .75rem}";
+
+export { TopLanding_vue_vue_type_style_index_0_scoped_2f03d4cb_lang as T };
+//# sourceMappingURL=TopLanding-styles-1.mjs-JaEckr6u.mjs.map

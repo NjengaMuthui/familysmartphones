@@ -1,0 +1,4 @@
+const Footer_vue_vue_type_style_index_0_scoped_f62bbbd6_lang = ".copyright[data-v-f62bbbd6]{display:flex;justify-content:center}.copyright p[data-v-f62bbbd6]{margin:40px auto}.img[data-v-f62bbbd6]{width:100%}.foot[data-v-f62bbbd6]{margin-bottom:30px}.title[data-v-f62bbbd6]{color:var(--genz-color-brand-1);font-size:.875rem;font-weight:600;margin-bottom:10px}.head[data-v-f62bbbd6]{align-items:center;display:flex;flex-direction:column;gap:20px;margin:20px 0;width:100%}.patners[data-v-f62bbbd6]{color:#000;font-size:1.875rem;font-weight:600;letter-spacing:.9px}.body[data-v-f62bbbd6]{gap:40%}.body[data-v-f62bbbd6],.ct-i[data-v-f62bbbd6]{display:flex}.ct-i[data-v-f62bbbd6]{align-items:center;gap:8px}.center[data-v-f62bbbd6]{display:flex;justify-content:center}.link[data-v-f62bbbd6]{white-space:nowrap}";
+
+export { Footer_vue_vue_type_style_index_0_scoped_f62bbbd6_lang as F };
+//# sourceMappingURL=entry-styles-5.mjs-CpgN_m7K.mjs.map
