@@ -46,15 +46,13 @@ const subtotal = computed(() => {
   color: black;
 }
 .list {
-  width: 60%;
+  width: 90%;
+  margin: 0 auto;
 }
 .summary {
-  position: absolute;
-  left: 60%;
-  top: 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 40px 20px;
-  width: 40%;
+  width: 100%;
 }
 .shiping-container,
 .subtotal {
@@ -77,9 +75,21 @@ const subtotal = computed(() => {
 }
 .total {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 h4 {
-  font-size: 15px;
+  font-size: 0.9375rem;
+}
+@media (min-width: 900px) {
+  .summary {
+    position: absolute;
+    left: 60%;
+    top: 0;
+    width: 40%;
+  }
+  .list {
+    width: 55%;
+    margin: 0;
+  }
 }
 </style>

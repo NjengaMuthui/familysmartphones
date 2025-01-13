@@ -7,7 +7,7 @@
       </h3>
       <div class="row">
         <h4>Quantity :{{ quantity }}</h4>
-        <button>Remove</button>
+        <button class="remove">Remove</button>
       </div>
     </div>
   </div>
@@ -22,10 +22,18 @@ const props = defineProps({
 </script>
 
 <style scoped>
+.remove {
+  color: red;
+  cursor: pointer;
+}
 .cart_item {
+  margin: 20px auto;
   display: flex;
-  height: 150px;
   gap: 20px;
+  flex-direction: column;
+}
+.cart_item img {
+  width: 100%;
 }
 .row {
   display: flex;
@@ -38,5 +46,13 @@ const props = defineProps({
   border: none;
   background: transparent;
   cursor: pointer;
+}
+@media (min-width: 600px) {
+  .cart_item {
+    flex-direction: row;
+  }
+  .cart_item img {
+    width: 200px;
+  }
 }
 </style>

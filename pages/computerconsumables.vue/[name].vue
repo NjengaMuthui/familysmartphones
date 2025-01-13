@@ -91,12 +91,12 @@ function toPreviousPage() {
   margin: 20px auto 0 auto;
   display: flex;
   position: relative;
-  flex-direction: column;
-  gap: 20px;
 }
 .sort-panel {
   display: flex;
   flex: 0 0 200px;
+  position: sticky;
+  top: 101px;
   flex-direction: column;
   gap: 20px;
 }
@@ -140,11 +140,10 @@ function toPreviousPage() {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: space-between;
 }
 .select-wrapper {
   position: relative;
-  width: 100px; /* Adjust as needed */
+  width: 200px; /* Adjust as needed */
 }
 
 select {
@@ -210,13 +209,5 @@ option {
 }
 .currentpage {
   border: solid 1px black;
-}
-@media (min-width: 775px) {
-  .brand {
-    flex-direction: row;
-  }
-  .select-wrapper {
-    width: 200px; /* Adjust as needed */
-  }
 }
 </style>

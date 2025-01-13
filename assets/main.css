@@ -1,10 +1,7 @@
 @import "./base.css";
 
-#app {
+#__nuxt {
   width: 100%;
-  height: 100%;
-  position: relative;
-  font-weight: normal;
 }
 .rounded-gradient {
   background: linear-gradient(
@@ -30,6 +27,18 @@ a {
   color: black;
   transition: 0.4s;
   font-weight: 600;
+}
+.blue-line::after {
+  content: ""; /* Creates the line */
+  display: block; /* Makes it behave like a block element */
+  width: 50%; /* Sets the width of the line to 50% of the parent */
+  height: 2px; /* Adjust the thickness of the line */
+  background-color: var(--genz-color-brand-2); /* Color of the line */
+  margin: 0 auto; /* Centers the line */
+  position: absolute; /* Positions the line relative to the parent */
+  bottom: -10px; /* Adjusts the distance below the text (negative value moves it further down) */
+  left: 0;
+  right: 0; /* Ensures the line stays centered */
 }
 
 @media (hover: hover) {

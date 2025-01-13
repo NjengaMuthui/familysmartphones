@@ -84,7 +84,7 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
 .slider-container {
   width: 90%;
   max-width: 600px;

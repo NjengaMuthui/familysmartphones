@@ -14,12 +14,17 @@
           </div>
           <div class="ct-i">
             <FontAwesomeIcon icon="fa-solid fa-envelope" />
-            <div class="txt">Familysmart</div>
+            <div class="txt">roymarc88@gmail.com</div>
+          </div>
+          <div class="ct-i">
+            <FontAwesomeIcon icon="fa-solid fa-envelope" />
+            <div class="txt">Familysmartphoneltd1991@gmail.com</div>
           </div>
         </div>
         <div class="abouts">
           <div class="title">Our Company</div>
-          <div class="link"><a href="#">About Us</a></div>
+          <div class="link"><a href="/about">About Us</a></div>
+          <div class="link"><a href="/history">Our History</a></div>
           <div class="link"><a href="#">Mission Vision&Values</a></div>
           <div class="link"><a href="#">From Our Customers</a></div>
         </div>
@@ -71,7 +76,15 @@ import { filename } from "~/scripts/useHelper";
 }
 .body {
   display: flex;
-  gap: 40%;
+  flex-direction: column;
+  margin: 30px auto;
+  gap: 20%;
+}
+@media (min-width: 700px) {
+  .body {
+    flex-direction: row;
+    margin: 0;
+  }
 }
 .ct-i {
   display: flex;

@@ -135,16 +135,16 @@ function openCart() {
                     >Laptops <FontAwesomeIcon icon="fa-solid fa-chevron-down"
                   /></NuxtLink>
                   <ul class="dropdown">
-                    <li><NuxtLink to="/brand/laptop/HP">HP</NuxtLink></li>
-                    <li><NuxtLink to="/brand/laptop/Dell">Dell</NuxtLink></li>
+                    <li><NuxtLink to="/laptop/HP">HP</NuxtLink></li>
+                    <li><NuxtLink to="/laptop/Dell">Dell</NuxtLink></li>
                     <li>
-                      <NuxtLink to="/brand/laptop/Lenovo">Lenovo</NuxtLink>
+                      <NuxtLink to="/laptop/Lenovo">Lenovo</NuxtLink>
                     </li>
-                    <li><NuxtLink to="/brand/laptop/Apple">Apple</NuxtLink></li>
-                    <li><NuxtLink to="/brand/laptop/Acer">Acer</NuxtLink></li>
-                    <li><NuxtLink to="/brand/laptop/Asus">Asus</NuxtLink></li>
+                    <li><NuxtLink to="/laptop/Apple">Apple</NuxtLink></li>
+                    <li><NuxtLink to="/laptop/Acer">Acer</NuxtLink></li>
+                    <li><NuxtLink to="/laptop/Asus">Asus</NuxtLink></li>
                     <li>
-                      <NuxtLink to="/brand/laptop/Samsung">Samsung</NuxtLink>
+                      <NuxtLink to="/laptop/Samsung">Samsung</NuxtLink>
                     </li>
                   </ul>
                 </li>
@@ -152,62 +152,66 @@ function openCart() {
                   <NuxtLink to="#"
                     >Computers<FontAwesomeIcon icon="fa-solid fa-chevron-down"
                   /></NuxtLink>
-                  <ul class="dropdown">
-                    <li>
-                      <NuxtLink
-                        to="/brand/computerconsumables/desktop-computers"
-                        >Desktop Computers</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink
-                        to="/brand/computerconsumables/chargers-power-cables"
-                        >Chargers & Power Cables</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/computerconsumables/keyboards-mouse"
-                        >Keyboards & Mouse</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/computerconsumables/routers"
-                        >Routers</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/computerconsumables/switches"
-                        >Switches</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/computerconsumables/servers"
-                        >Servers</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink
-                        to="/brand/computerconsumables/cctv-installation"
-                        >CCTV Installation</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink
-                        to="/brand/computerconsumables/softwares-repairs"
-                        >Softwares & Repairs</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink
-                        to="/brand/computerconsumables/printers-toners-inks"
-                        >Printers, Toners & Inks</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/computerconsumables/printing-papers"
-                        >Printing Papers</NuxtLink
-                      >
-                    </li>
+                  <ul class="dropdown computer-dropdown">
+                    <div class="flex-row">
+                      <div class="flex-column">
+                        <li>
+                          <NuxtLink to="/computerconsumables/desktop-computers"
+                            >Desktop Computers</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink
+                            to="/computerconsumables/chargers-power-cables"
+                            >Chargers & Power Cables</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/computerconsumables/keyboards-mouse"
+                            >Keyboards & Mouse</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/computerconsumables/routers"
+                            >Routers</NuxtLink
+                          >
+                        </li>
+
+                        <li>
+                          <NuxtLink to="/computerconsumables/switches"
+                            >Switches</NuxtLink
+                          >
+                        </li>
+                      </div>
+                      <div class="flex-column">
+                        <li>
+                          <NuxtLink to="/computerconsumables/servers"
+                            >Servers</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/computerconsumables/cctv-installation"
+                            >CCTV Installation</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/computerconsumables/softwares-repairs"
+                            >Softwares & Repairs</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink
+                            to="/computerconsumables/printers-toners-inks"
+                            >Printers, Toners & Inks</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/computerconsumables/printing-papers"
+                            >Printing Papers</NuxtLink
+                          >
+                        </li>
+                      </div>
+                    </div>
                   </ul>
                 </li>
                 <li class="menu-item slider">
@@ -215,82 +219,90 @@ function openCart() {
                     >Accessories
                     <FontAwesomeIcon icon="fa-solid fa-chevron-down"
                   /></NuxtLink>
-                  <ul class="dropdown">
-                    <li>
-                      <NuxtLink to="/brand/accessories/phone-cases"
-                        >Phone Cases</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/earphones"
-                        >Earphones</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/stylus-pen"
-                        >Stylus Pen</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/power-banks"
-                        >Power Banks</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/screen-protectors"
-                        >Screen Protectors</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/portable-speakers"
-                        >Portable Speakers</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/chargers"
-                        >Chargers</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/memory-cards"
-                        >Memory Cards</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/flash-disks"
-                        >Flash Disks</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/hard-drives"
-                        >Hard Drives</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/power-cables"
-                        >Power Cables</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/smart-watches"
-                        >Smart Watches</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/ring-light"
-                        >Ring Light</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/selfie-tripod-stand"
-                        >Selfie Tripod Stand</NuxtLink
-                      >
-                    </li>
-                    <li>
-                      <NuxtLink to="/brand/accessories/computer-ram"
-                        >Computer Ram</NuxtLink
-                      >
-                    </li>
+                  <ul class="dropdown accessories-dropdown">
+                    <div class="flex-row">
+                      <div class="flex-column">
+                        <li>
+                          <NuxtLink to="/brand/accessories/phone-cases"
+                            >Phone Cases</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/earphones"
+                            >Earphones</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/stylus-pen"
+                            >Stylus Pen</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/power-banks"
+                            >Power Banks</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/screen-protectors"
+                            >Screen Protectors</NuxtLink
+                          >
+                        </li>
+                      </div>
+                      <div class="flex-column">
+                        <li>
+                          <NuxtLink to="/brand/accessories/portable-speakers"
+                            >Portable Speakers</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/chargers"
+                            >Chargers</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/memory-cards"
+                            >Memory Cards</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/flash-disks"
+                            >Flash Disks</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/hard-drives"
+                            >Hard Drives</NuxtLink
+                          >
+                        </li>
+                      </div>
+                      <div class="flex-column">
+                        <li>
+                          <NuxtLink to="/brand/accessories/power-cables"
+                            >Power Cables</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/smart-watches"
+                            >Smart Watches</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/ring-light"
+                            >Ring Light</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/selfie-tripod-stand"
+                            >Selfie Tripod Stand</NuxtLink
+                          >
+                        </li>
+                        <li>
+                          <NuxtLink to="/brand/accessories/computer-ram"
+                            >Computer Ram</NuxtLink
+                          >
+                        </li>
+                      </div>
+                    </div>
                   </ul>
                 </li>
               </ul>
@@ -346,13 +358,13 @@ function openCart() {
             <li class="menu-item">
               <NuxtLink to="#">Laptops</NuxtLink>
               <ul>
-                <li><NuxtLink to="/brand/laptop/HP">HP</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Dell">Dell</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Lenovo">Lenovo</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Apple">Apple</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Acer">Acer</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Asus">Asus</NuxtLink></li>
-                <li><NuxtLink to="/brand/laptop/Samsung">Samsung</NuxtLink></li>
+                <li><NuxtLink to="/laptop/HP">HP</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Dell">Dell</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Lenovo">Lenovo</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Apple">Apple</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Acer">Acer</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Asus">Asus</NuxtLink></li>
+                <li><NuxtLink to="/laptop/Samsung">Samsung</NuxtLink></li>
               </ul>
             </li>
             <li class="menu-item">
@@ -370,53 +382,48 @@ function openCart() {
               <NuxtLink to="#">Computer Consumables</NuxtLink>
               <ul>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/desktop-computers"
+                  <NuxtLink to="/computerconsumables/desktop-computers"
                     >Desktop Computers</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink
-                    to="/brand/computerconsumables/chargers-power-cables"
+                  <NuxtLink to="/computerconsumables/chargers-power-cables"
                     >Chargers & Power Cables</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/keyboards-mouse"
+                  <NuxtLink to="/computerconsumables/keyboards-mouse"
                     >Keyboards & Mouse</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/routers"
-                    >Routers</NuxtLink
-                  >
+                  <NuxtLink to="/computerconsumables/routers">Routers</NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/switches"
+                  <NuxtLink to="/computerconsumables/switches"
                     >Switches</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/servers"
-                    >Servers</NuxtLink
-                  >
+                  <NuxtLink to="/computerconsumables/servers">Servers</NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/cctv-installation"
+                  <NuxtLink to="/computerconsumables/cctv-installation"
                     >CCTV Installation</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/softwares-repairs"
+                  <NuxtLink to="/computerconsumables/softwares-repairs"
                     >Softwares & Repairs</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/printers-toners-inks"
+                  <NuxtLink to="/computerconsumables/printers-toners-inks"
                     >Printers, Toners & Inks</NuxtLink
                   >
                 </li>
                 <li>
-                  <NuxtLink to="/brand/computerconsumables/printing-papers"
+                  <NuxtLink to="/computerconsumables/printing-papers"
                     >Printing Papers</NuxtLink
                   >
                 </li>
@@ -477,6 +484,7 @@ function openCart() {
   position: relative;
 }
 .body-footer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -629,11 +637,18 @@ nav {
   list-style: none;
   padding: 10px 30px 30px 30px;
   margin: 0;
-  z-index: 1000;
+  z-index: 6;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s ease;
   background-color: white;
+  white-space: nowrap;
+}
+.computer-dropdown {
+  left: -250px;
+}
+.accessories-dropdown {
+  left: -320px;
 }
 
 .dropdown li {
@@ -725,6 +740,14 @@ nav {
   -webkit-backdrop-filter: blur(10px) saturate(200%);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.flex-row {
+  display: flex;
+  gap: 30px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 @media (max-width: 768px) {
   .bottom {

@@ -14,18 +14,21 @@
       <h3 class="item-name">{{ props.Product.name }}</h3>
       <h2 class="item-price">{{ price }}</h2>
       <div
-        class="product-highlights hover-target"
         ref="hoverTarget"
-        @mouseenter="showTooltip"
-        @mouseleave="hideTooltip"
+        class="product-highlights"
+        @mouseenter="checkHalfwayPoint()"
       >
-        <div v-if="isTooltipVisible" :style="tooltipStyles" class="tooltip">
+        <div
+          class="tooltip"
+          :class="{ tooltiptop: isAbove, tooltipbottom: !isAbove }"
+        >
           <ul>
             <li v-for="feature in Product.features">
               {{ feature }}
             </li>
           </ul>
         </div>
+
         <div class="item"><FontAwesomeIcon icon="database" />128gb</div>
         <div class="item"><FontAwesomeIcon icon="mobile-button" />6.56 in</div>
         <div class="item"><FontAwesomeIcon icon="camera" />50mp + 8mp</div>
@@ -39,6 +42,17 @@ import { computed } from "vue";
 import { formatNumberWithCommas } from "~/scripts/useHelper";
 const router = useRouter();
 const hoverTarget = ref(null);
+const isAbove = ref(true);
+
+function checkHalfwayPoint() {
+  const rect = hoverTarget.value.getBoundingClientRect();
+  let midpoint = window.innerHeight / 2;
+  midpoint = midpoint + 70;
+  isAbove.value = rect.top + rect.height / 2 > midpoint;
+}
+
+/*
+
 const isTooltipVisible = ref(false);
 const tooltipStyles = reactive({
   top: "0px",
@@ -48,10 +62,10 @@ const tooltipStyles = reactive({
 });
 
 const showTooltip = () => {
-  const rect = hoverTarget.value.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-  const tooltipHeight = 50; // Estimated tooltip height
-  const isAbove = rect.bottom + tooltipHeight > windowHeight;
+ 
+  const tooltipHeight = 200;
+
+  const isAbove = rect.top + rect.height / 2 > midpoint;
 
   tooltipStyles.top = isAbove
     ? `${rect.top - tooltipHeight}px`
@@ -61,6 +75,11 @@ const showTooltip = () => {
     ? "translate(-50%, -10px)"
     : "translate(-50%, 10px)";
   tooltipStyles.opacity = 1;
+
+  isTooltipVisible.value = true;
+};
+
+const keepTooltipVisible = () => {
   isTooltipVisible.value = true;
 };
 
@@ -69,9 +88,9 @@ const hideTooltip = () => {
   tooltipStyles.transform = "translate(-50%, 0px)";
   setTimeout(() => {
     isTooltipVisible.value = false;
-  }, 300); // Match transition duration
+  }, 300);
 };
-
+*/
 const props = defineProps({
   Product: Object,
   pos: Number
@@ -88,6 +107,26 @@ function addCart() {}
 </script>
 
 <style scoped>
+.tooltip {
+  position: absolute;
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  transform-origin: center;
+  z-index: 5;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  left: 0;
+}
+.tooltiptop {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+.tooltipbottom {
+  top: 100%;
+}
 .product-highlights {
   position: relative;
   display: flex;
@@ -100,6 +139,9 @@ function addCart() {}
 }
 .product-highlights:hover {
   background-color: rgb(230, 230, 230);
+}
+.product-highlights:hover .tooltip {
+  visibility: visible;
 }
 .product-highlights .item svg {
   margin-right: 4px;
@@ -180,54 +222,5 @@ function addCart() {}
   font-weight: 700;
   font-size: 16px;
   color: black;
-}
-
-.tooltip {
-  position: absolute;
-  top: 100%; /* Default position below */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  border-radius: 5px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
-}
-
-.tooltip-up {
-  top: auto; /* Override top */
-  bottom: 100%; /* Position above */
-}
-
-.tooltip-up::after {
-  /* Optional arrow styling for tooltip above */
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-}
-
-.tooltip:not(.tooltip-up)::after {
-  /* Optional arrow styling for tooltip below */
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
-}
-
-.tooltip[v-show="true"] {
-  opacity: 1;
-  visibility: visible;
 }
 </style>
