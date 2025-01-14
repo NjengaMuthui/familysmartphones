@@ -531,7 +531,7 @@ function openCart() {
   height: 100%;
   background: var(--vt-c-black);
   opacity: 0.8;
-  z-index: 3;
+  z-index: 4;
   position: fixed;
   top: 0;
 }
@@ -540,7 +540,7 @@ function openCart() {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 4;
+  z-index: 5;
   background: var(--color-background);
   height: 100%;
   padding-top: 100px;
@@ -617,7 +617,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   background: white;
 }
 .top-logo {
@@ -637,7 +637,7 @@ nav {
   list-style: none;
   padding: 10px 30px 30px 30px;
   margin: 0;
-  z-index: 6;
+  z-index: 7;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s ease;

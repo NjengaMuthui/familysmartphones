@@ -1,9 +1,9 @@
 <template>
   <div class="timeline-container">
     <div class="top">
-      <h1 class="blue-line title">About Us</h1>
+      <h1 class="blue-line title">History</h1>
     </div>
-    <div
+    <section
       v-for="(event, index) in timelineEvents"
       :key="index"
       class="timeline-item"
@@ -11,8 +11,8 @@
       ref="timelineItems"
     >
       <div class="year">{{ event.year }}</div>
-      <div class="description">{{ event.description }}</div>
-    </div>
+      <article class="description">{{ event.description }}</article>
+    </section>
   </div>
 </template>
 
@@ -131,7 +131,7 @@ onMounted(() => {
 @media (min-width: 768px) {
   .timeline-container {
     gap: 70px;
-    padding: 30px;
+    padding: 10px;
   }
 
   .timeline-item {
@@ -151,7 +151,7 @@ onMounted(() => {
 
 @media (min-width: 1200px) {
   .timeline-container {
-    padding: 50px;
+    padding: 20px;
   }
 
   .description {
