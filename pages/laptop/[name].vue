@@ -60,12 +60,10 @@
 </template>
 
 <script setup>
-import { generateProducts } from "~/scripts/useHelper";
 import { computed, ref } from "vue";
 
 const route = useRoute();
-
-let products = generateProducts(20);
+const products = ref([]);
 const pages = ref(2);
 function filter() {}
 const currentPage = ref(0);
