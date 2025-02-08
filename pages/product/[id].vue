@@ -31,7 +31,9 @@
       </div>
       <div class="text_container">
         <h3 class="item_name">{{ Product.name }}</h3>
-        <h4 class="item_price">Kshs {{ Product.price }}</h4>
+        <h4 class="item_price">
+          Kshs {{ formatNumberWithCommas(Product.price) }}
+        </h4>
         <div class="quantity_container">
           <div class="column_container">
             <h4 class="quantity">Quantity</h4>
@@ -66,7 +68,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { filename } from "~/scripts/useHelper";
+import { filename, formatNumberWithCommas } from "~/scripts/useHelper";
 import { useCartStore } from "~/store/cartStore";
 
 const store = useCartStore();
@@ -223,6 +225,7 @@ function moveBackwards() {
   width: 60%;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 .text_container {
   width: 35%;
@@ -236,6 +239,7 @@ function moveBackwards() {
   display: flex;
   list-style-type: none;
   gap: 20px;
+  justify-content: space-between;
 }
 .inner_container {
   background-size: auto 100%;

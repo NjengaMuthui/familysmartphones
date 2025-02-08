@@ -2,9 +2,10 @@
   <div class="cart">
     <div class="list">
       <CartItem
-        v-for="item in store.list"
+        v-for="(item, index) in store.list"
         :image_src="filename(item.images.split(',')[0])"
         :item_name="item.name"
+        :index="index"
       />
       <div class="summary">
         <h2 class="head">Order Summary</h2>

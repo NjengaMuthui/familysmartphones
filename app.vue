@@ -113,7 +113,7 @@ function openCart() {
                   <NuxtLink to="/brand/Realme">Realme</NuxtLink>
                 </li>
                 <li class="menu-item slider">
-                  <NuxtLink to="/brand/Xiaoami">Xiaoami</NuxtLink>
+                  <NuxtLink to="/brand/Xiaomi">Xiaomi</NuxtLink>
                 </li>
                 <li class="menu-item slider">
                   <NuxtLink to="/brand/Vivo">Vivo</NuxtLink>

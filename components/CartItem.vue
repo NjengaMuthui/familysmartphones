@@ -7,16 +7,21 @@
       </h3>
       <div class="row">
         <h4>Quantity : 1</h4>
-        <button class="remove">Remove</button>
+        <button @click="store.remove(props.index)" class="remove">
+          Remove
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useCartStore } from "~/store/cartStore";
+const store = useCartStore();
 const props = defineProps({
   image_src: String,
-  item_name: String
+  item_name: String,
+  index: Number
 });
 </script>
 
