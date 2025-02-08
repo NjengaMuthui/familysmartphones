@@ -7,14 +7,14 @@
         :style="{ left: `${minPercent}%` }"
         @mousedown="startDrag('min')"
       >
-        <span class="tooltip">{{ minPrice }}</span>
+        <span class="tooltip">{{ formatNumberWithCommas(minPrice) }}</span>
       </div>
       <div
         class="thumb"
         :style="{ left: `${maxPercent}%` }"
         @mousedown="startDrag('max')"
       >
-        <span class="tooltip">{{ maxPrice }}</span>
+        <span class="tooltip">{{ formatNumberWithCommas(maxPrice) }}</span>
       </div>
       <div
         class="range"
@@ -25,14 +25,15 @@
       ></div>
     </div>
     <div class="price-labels">
-      <span>Min: {{ minPrice }}</span>
-      <span>Max: {{ maxPrice }}</span>
+      <span>Min: {{ formatNumberWithCommas(minPrice) }}</span>
+      <span>Max: {{ formatNumberWithCommas(maxPrice) }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { formatNumberWithCommas } from "~/scripts/useHelper";
 const props = defineProps({ min: Number, max: Number });
 const minPrice = ref(props.min);
 const maxPrice = ref(props.max);

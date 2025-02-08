@@ -4,11 +4,7 @@
       {{ props.title }}
     </div>
     <div class="flex-view">
-      <ProdItem
-        v-for="(product, index) in props.prods"
-        :Product="product"
-        :pos="index"
-      />
+      <ProdItem v-for="product in props.prods" :Product="product" />
     </div>
   </div>
 </template>

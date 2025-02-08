@@ -15,7 +15,7 @@
           </div>
           <div
             v-for="img in images"
-            :style="{ backgroundImage: 'url(' + img.url + ')' }"
+            :style="{ backgroundImage: `url(${img.url})` }"
             class="inner_container"
             :class="{ active: img.isActive }"
           ></div>
@@ -50,30 +50,45 @@
             </div>
           </div>
         </div>
-        <button class="cart_button">Add to Cart</button>
+        <button @click="addCart" class="cart_button">Add to Cart</button>
         <h3 class="p_desc">Features</h3>
         <ul class="features_list">
-          <li v-for="feature in Product.features">
+          <li v-for="feature in features">
             {{ feature }}
           </li>
         </ul>
       </div>
     </div>
     <h3 class="p_desc">Description</h3>
-    <p class="desc">{{ Product.description }}</p>
+    <p class="desc">{{ Product.poularity }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { selectProduct } from "~/scripts/useHelper";
+import { ref, computed } from "vue";
+import { filename } from "~/scripts/useHelper";
+import { useCartStore } from "~/store/cartStore";
+
+const store = useCartStore();
 const route = useRoute();
+const client = useSupabaseClient();
+const { data: Product } = await useAsyncData(
+  "getProduct",
+  () => client.from("devices").select().eq("num", Number(route.params.id)),
+  {
+    transform: (result) => result.data[0]
+  }
+);
+
+function addCart() {
+  for (let i = 0; i < quantity.value; i++) {
+    store.add(Product.value);
+  }
+}
 
 const left = ref(true);
 const right = ref(false);
 
-const Product = selectProduct(Number(route.params.id));
-const images = ref([]);
 let currentIndex = 0;
 const quantity = ref(1);
 const minusBtn = ref(true);
@@ -87,13 +102,39 @@ function minusQuantity() {
   if (quantity.value == 1) minusBtn.value = true;
 }
 
-Product.imgs.forEach((element) => {
-  images.value.push({
-    url: element,
+const images = computed(() => {
+  if (!Product.value?.images) return [];
+  return Product.value.images.split(",").map((element) => ({
+    url: filename(element),
     isActive: false
-  });
+  }));
 });
-images.value[currentIndex].isActive = true;
+
+onMounted(() => {
+  images.value[currentIndex].isActive = true;
+});
+
+const features = computed(() =>
+  Product.value
+    ? [
+        Product.value.display_type,
+        Product.value.display_size,
+        Product.value.resolution,
+        Product.value.os,
+        Product.value.cpu,
+        `${Product.value.memory_internal ?? ""} GB RAM ${
+          Product.value.memory_external ?? ""
+        } GB ROM`,
+        Product.value.main_camera,
+        Product.value.main_camera_features,
+        Product.value.front_camera,
+        Product.value.front_camera_features,
+        Product.value.sensors,
+        `${Product.value.battery ?? ""} mAh battery`,
+        Product.value.charging
+      ]
+    : []
+);
 
 function thumbClick(index) {
   currentIndex = index;

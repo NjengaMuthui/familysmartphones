@@ -1,11 +1,14 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useCartStore } from "~/store/cartStore";
 
 const open = ref(false);
 const opacity = ref(1);
 const side = ref(true);
 const search_input = ref(null);
 const iconSize = ref("50px");
+
+const cartItems = useCartStore();
 
 const updateIconSize = () => {
   const screenWidth = window.innerWidth;
@@ -79,7 +82,7 @@ function openCart() {
                 </div>
                 <button @click="openCart" class="items_cart">
                   <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-                  <div class="items_num">0</div>
+                  <div class="items_num">{{ cartItems.size }}</div>
                 </button>
 
                 <button @click="side = !side">

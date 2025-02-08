@@ -1,6 +1,6 @@
 <template>
   <div class="shop-item">
-    <div @click="viewDetails" class="img-container">
+    <div class="img-container">
       <div @click="addCart" class="top-container">
         <h4>ADD TO CART</h4>
         <FontAwesomeIcon icon="fa-solid fa-cart-plus" />
@@ -8,7 +8,7 @@
       <div @click="viewDetails" class="bottom-container">
         <h4>VIEW DETAILS</h4>
       </div>
-      <img :src="props.Product.imgs[0]" alt="Shop Item Name" class="img" />
+      <img @click="viewDetails" :src="img" alt="Shop Item Name" class="img" />
     </div>
     <div class="item-description">
       <h3 class="item-name">{{ props.Product.name }}</h3>
@@ -23,15 +23,30 @@
           :class="{ tooltiptop: isAbove, tooltipbottom: !isAbove }"
         >
           <ul>
-            <li v-for="feature in Product.features">
+            <li v-for="feature in features">
               {{ feature }}
             </li>
           </ul>
         </div>
-
-        <div class="item"><FontAwesomeIcon icon="database" />128gb</div>
-        <div class="item"><FontAwesomeIcon icon="mobile-button" />6.56 in</div>
-        <div class="item"><FontAwesomeIcon icon="camera" />50mp + 8mp</div>
+        <div class="top">
+          <div class="item">
+            <font-awesome-icon icon="tablet" />{{ props.Product.screen }} In
+          </div>
+          <div v-if="isCamera" class="item">
+            <IconsCamera />{{ props.Product.Camera }} MP
+          </div>
+          <div v-if="isBattery" class="item">
+            <IconsBattery />{{ props.Product.battery_type }} mAh
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="item">
+            <IconsDisk /> {{ props.Product.memory_external }} GB
+          </div>
+          <div class="item">
+            <IconsRam />{{ props.Product.memory_internal }} GB
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -39,10 +54,29 @@
 
 <script setup>
 import { computed } from "vue";
-import { formatNumberWithCommas } from "~/scripts/useHelper";
+import { filename, formatNumberWithCommas } from "~/scripts/useHelper";
+import { useCartStore } from "~/store/cartStore";
+const store = useCartStore();
 const router = useRouter();
 const hoverTarget = ref(null);
 const isAbove = ref(true);
+const price = computed(() => formatNumberWithCommas(props.Product.price));
+const img = computed(() => filename(props.Product.images.split(",")[0]));
+const isCamera = computed(
+  () => props.Product.Camera !== "" || props.Product.Camera !== null
+);
+const isBattery = computed(
+  () => props.Product.battery_type !== "" || props.Product.battery_type !== null
+);
+
+const features = computed(() => [
+  props.Product.display_size,
+  props.Product.display_type,
+  props.Product.os,
+  props.Product.main_camera,
+  props.Product.main_camera_features,
+  props.Product.sensors
+]);
 
 function checkHalfwayPoint() {
   const rect = hoverTarget.value.getBoundingClientRect();
@@ -51,62 +85,25 @@ function checkHalfwayPoint() {
   isAbove.value = rect.top + rect.height / 2 > midpoint;
 }
 
-/*
-
-const isTooltipVisible = ref(false);
-const tooltipStyles = reactive({
-  top: "0px",
-  left: "0px",
-  opacity: 0,
-  transition: "opacity 0.3s ease, transform 0.3s ease"
-});
-
-const showTooltip = () => {
- 
-  const tooltipHeight = 200;
-
-  const isAbove = rect.top + rect.height / 2 > midpoint;
-
-  tooltipStyles.top = isAbove
-    ? `${rect.top - tooltipHeight}px`
-    : `${rect.bottom}px`;
-  tooltipStyles.left = `${rect.left + rect.width / 2}px`;
-  tooltipStyles.transform = isAbove
-    ? "translate(-50%, -10px)"
-    : "translate(-50%, 10px)";
-  tooltipStyles.opacity = 1;
-
-  isTooltipVisible.value = true;
-};
-
-const keepTooltipVisible = () => {
-  isTooltipVisible.value = true;
-};
-
-const hideTooltip = () => {
-  tooltipStyles.opacity = 0;
-  tooltipStyles.transform = "translate(-50%, 0px)";
-  setTimeout(() => {
-    isTooltipVisible.value = false;
-  }, 300);
-};
-*/
 const props = defineProps({
-  Product: Object,
-  pos: Number
+  Product: Object
 });
-const price = computed(
-  () => "Kshs " + formatNumberWithCommas(Number(props.Product.price))
-);
 
 function viewDetails() {
-  router.push(`/product/${props.Product.id}`);
+  router.push(`/product/${props.Product.num}`);
 }
 
-function addCart() {}
+function addCart() {
+  store.add(props.Product);
+}
 </script>
 
 <style scoped>
+.item {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
 .tooltip {
   position: absolute;
   visibility: hidden;
@@ -130,12 +127,18 @@ function addCart() {}
 .product-highlights {
   position: relative;
   display: flex;
+  flex-direction: column;
   font-size: 0.75rem;
-  justify-content: space-between;
   width: 90%;
   margin: 10px auto;
   color: var(--color-text);
   cursor: pointer;
+}
+.top,
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .product-highlights:hover {
   background-color: rgb(230, 230, 230);

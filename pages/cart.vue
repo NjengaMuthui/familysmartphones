@@ -2,10 +2,9 @@
   <div class="cart">
     <div class="list">
       <CartItem
-        v-for="item in prods"
-        :image_src="item.imgs[0]"
+        v-for="item in store.list"
+        :image_src="filename(item.images.split(',')[0])"
         :item_name="item.name"
-        :quantity="1"
       />
       <div class="summary">
         <h2 class="head">Order Summary</h2>
@@ -26,12 +25,13 @@
 <script setup>
 import CartItem from "../components/CartItem.vue";
 import { computed } from "vue";
-import { generateProducts, formatNumberWithCommas } from "~/scripts/useHelper";
+import { formatNumberWithCommas, filename } from "~/scripts/useHelper";
+import { useCartStore } from "~/store/cartStore";
+const store = useCartStore();
 
-let prods = generateProducts(3);
 const subtotal = computed(() => {
   let total = 0;
-  prods.forEach((element) => {
+  store.list.forEach((element) => {
     total = total + Number(element.price);
   });
   return formatNumberWithCommas(total);

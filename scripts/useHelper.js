@@ -3,110 +3,165 @@ function filename(name) {
   return `${window.location.protocol}//${window.location.hostname}${port}*/
   return `/images/${name}`;
 }
-function selectProduct(id) {
-  let rando = getFakeProductsArr().find((product) => id === product.id);
-  return {
-    id: rando.id,
-    imgs: [filename(rando.img), filename(rando.img), filename(rando.img)],
-    name: rando.nm,
-    price: rando.price,
-    description: `${rando.nm} is a sleek and modern smartphone designed to deliver a seamless user experience. It features a 6.56-inch HD+ display with a 120Hz refresh rate for smooth visuals, housed in a stylish lavender finish with a shimmering effect. The phone is powered by the MediaTek Dimensity 700 chipset, offering 5G connectivity and efficient performance, paired with 4GB/6GB of RAM and 64GB/128GB of expandable storage. Its dual rear camera setup includes a 50MP primary lens and a 2MP depth sensor, while the 8MP front camera ensures crisp selfies. The device runs on Android 12 with ColorOS 12.1, supported by a long-lasting 5000mAh battery with 33W fast charging. Additional features include a side-mounted fingerprint sensor, dual-SIM support, and USB-C charging, making it a versatile option for everyday use`,
-    features: [
-      "6.56-inch HD+ LCD display",
-      "Resolution: 1612 x 720 pixels",
-      "120Hz refresh rate for smoother visuals",
-      "Dual rear cameras: 50MP (primary) + 2MP (depth sensor)",
-      "8MP front camera for selfies",
-      "MediaTek Dimensity 700 chipset",
-      "4GB/6GB RAM options",
-      "64GB/128GB internal storage, expandable via microSD",
-      "5000mAh battery with 33W fast charging",
-      "Android 12 with ColorOS 12.1",
-      "Side-mounted fingerprint sensor",
-      "Dual-SIM support",
-      "5G connectivity",
-      "Bluetooth 5.1 and Wi-Fi 802.11ac",
-      "USB-C charging port",
-      "3.5mm headphone jack"
-    ]
-  };
+function getURL() {
+  return "https://mipfcdfcjkaldjmepjwm.supabase.co";
+}
+function getKEY() {
+  return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1pcGZjZGZjamthbGRqbWVwandtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzcxMDc0NzQsImV4cCI6MjA1MjY4MzQ3NH0.XkPGCjiPfwZpNY1vKuDuNKnFYBdwBi2Mckedl8VvOjo";
 }
 function formatNumberWithCommas(number) {
   return number.toLocaleString();
 }
+const screenSize = {
+  title: "Screen Size",
+  items: [
+    { name: "5.5 inches or smaller", isSelected: false },
+    { name: "5.6 to 6.0 inches", isSelected: false },
+    { name: "6.1 to 6.5 inches", isSelected: false },
+    { name: "6.6 inches or larger", isSelected: false }
+  ],
+  single: true
+};
+const ramSize = {
+  title: "RAM",
+  items: [
+    { name: "3GB or lower", isSelected: false },
+    { name: "4GB", isSelected: false },
+    { name: "6GB", isSelected: false },
+    { name: "8GB", isSelected: false },
+    { name: "12GB", isSelected: false },
+    { name: "16GB or higher", isSelected: false }
+  ],
+  single: true
+};
 
-function generateProducts(product_amount) {
-  let arr = getFakeProductsArr();
-  let products = [];
+const storage = {
+  title: "Storage",
+  items: [
+    { name: "32GB or lower", isSelected: false },
+    { name: "64GB", isSelected: false },
+    { name: "128GB", isSelected: false },
+    { name: "256GB", isSelected: false },
+    { name: "512GB", isSelected: false },
+    { name: "1TB or higher", isSelected: false }
+  ],
+  single: true
+};
 
-  for (let i = 0; i < product_amount; i++) {
-    let rando = arr[Math.floor(Math.random() * 6)];
-    products.push({
-      id: rando.id,
-      imgs: [filename(rando.img), filename(rando.img), filename(rando.img)],
-      name: rando.nm,
-      price: rando.price,
-      description: `${rando.nm} is a sleek and modern smartphone designed to deliver a seamless user experience. It features a 6.56-inch HD+ display with a 120Hz refresh rate for smooth visuals, housed in a stylish lavender finish with a shimmering effect. The phone is powered by the MediaTek Dimensity 700 chipset, offering 5G connectivity and efficient performance, paired with 4GB/6GB of RAM and 64GB/128GB of expandable storage. Its dual rear camera setup includes a 50MP primary lens and a 2MP depth sensor, while the 8MP front camera ensures crisp selfies. The device runs on Android 12 with ColorOS 12.1, supported by a long-lasting 5000mAh battery with 33W fast charging. Additional features include a side-mounted fingerprint sensor, dual-SIM support, and USB-C charging, making it a versatile option for everyday use`,
-      features: [
-        "6.56-inch HD+ LCD display",
-        "Resolution: 1612 x 720 pixels",
-        "120Hz refresh rate for smoother visuals",
-        "Dual rear cameras: 50MP (primary) + 2MP (depth sensor)",
-        "8MP front camera for selfies",
-        "MediaTek Dimensity 700 chipset",
-        "4GB/6GB RAM options",
-        "64GB/128GB internal storage, expandable via microSD",
-        "5000mAh battery with 33W fast charging",
-        "Android 12 with ColorOS 12.1",
-        "Side-mounted fingerprint sensor",
-        "Dual-SIM support",
-        "5G connectivity",
-        "Bluetooth 5.1 and Wi-Fi 802.11ac",
-        "USB-C charging port",
-        "3.5mm headphone jack"
-      ]
-    });
+const batteryCapacity = {
+  title: "Battery Capacity",
+  items: [
+    { name: "3000mAh or smaller", isSelected: false },
+    { name: "3001mAh to 4000mAh", isSelected: false },
+    { name: "4001mAh to 5000mAh", isSelected: false },
+    { name: "5001mAh or larger", isSelected: false }
+  ],
+  single: true
+};
+
+const camera = {
+  title: "Rear Camera Resolution",
+  items: [
+    { name: "12MP or lower", isSelected: false },
+    { name: "13MP to 48MP", isSelected: false },
+    { name: "49MP to 108MP", isSelected: false },
+    { name: "108MP or higher", isSelected: false }
+  ],
+  single: true
+};
+function setfilters(query, screen, ram, str, battery, cam) {
+  switch (screen) {
+    case screenSize.items[0].name:
+      query.lte("screen", 5.5);
+      break;
+    case screenSize.items[1].name:
+      query.gte("screen", 5.6).lte("screen", 6.0);
+      break;
+    case screenSize.items[2].name:
+      query.gte("screen", 6.1).lte("screen", 6.5);
+      break;
+    case screenSize.items[3].name:
+      query.gte(6.6);
+      break;
   }
-  return products;
+  switch (ram) {
+    case ramSize.items[0].name:
+      query.lte("memory_internal", 3);
+      break;
+    case ramSize.items[1].name:
+      query.eq("memory_internal", 4);
+      break;
+    case ramSize.items[2].name:
+      query.eq("memory_internal", 6);
+      break;
+    case ramSize.items[3].name:
+      query.eq("memory_internal", 8);
+      break;
+    case ramSize.items[4].name:
+      query.eq("memory_internal", 12);
+      break;
+    case ramSize.items[5].name:
+      query.gte("memory_internal", 16);
+      break;
+  }
+  switch (str) {
+    case storage.items[0].name:
+      query.lte("memory_external", 32);
+      break;
+    case storage.items[1].name:
+      query.eq("memory_external", 64);
+      break;
+    case storage.items[2].name:
+      query.eq("memory_external", 128);
+      break;
+    case storage.items[3].name:
+      query.eq("memory_external", 256);
+      break;
+    case storage.items[4].name:
+      query.eq("memory_external", 512);
+      break;
+    case storage.items[5].name:
+      query.gte("memory_external", 1024);
+      break;
+  }
+  switch (battery) {
+    case batteryCapacity.items[0].name:
+      query.lte("battery_type", 3000);
+      break;
+    case batteryCapacity.items[1].name:
+      query.gte("battery_type", 3001).lte("battery_type", 4000);
+      break;
+    case batteryCapacity.items[2].name:
+      query.gte("battery_type", 4001).lte("battery_type", 5000);
+      break;
+    case batteryCapacity.items[3].name:
+      query.gte("battery_type", 5001);
+      break;
+  }
+  switch (cam) {
+    case camera.items[0].name:
+      query.lte("rear_Camera", 12);
+      break;
+    case camera.items[1].name:
+      query.gte("rear_Camera", 13).lte("rear_Camera", 48);
+      break;
+    case camera.items[2].name:
+      query.gte("rear_Camera", 49).lte("rear_Camera", 108);
+      break;
+    case camera.items[3].name:
+      query.gte("rear_Camera", 108);
+      break;
+  }
+  return query;
 }
-function getFakeProductsArr() {
-  return [
-    {
-      img: "apple-iphone-13-pro-max.jpg",
-      price: "30000",
-      nm: "Apple Iphone 13 Pro Max",
-      id: 0
-    },
-    {
-      img: "images (28).jpeg",
-      price: "45000",
-      nm: "HP 830",
-      id: 1
-    },
-    {
-      img: "wtc.png",
-      price: "6000",
-      nm: "Tecno Watch 2 Pro",
-      id: 2
-    },
-    {
-      img: "images.jpeg",
-      price: "15600",
-      nm: "Vivo v40 Series",
-      id: 3
-    },
-    {
-      img: "Vivo-V40-Lite-4G-a-1.jpg",
-      price: "38000",
-      nm: "Vivo v40 Series",
-      id: 4
-    },
-    {
-      img: "Samsung-Galaxy-Fit-3.jpg",
-      price: "145000",
-      nm: "Samsung Galaxy Fit 3",
-      id: 5
-    }
-  ];
-}
-export { filename, generateProducts, selectProduct, formatNumberWithCommas };
+export {
+  filename,
+  formatNumberWithCommas,
+  screenSize,
+  ramSize,
+  storage,
+  batteryCapacity,
+  camera,
+  getKEY,
+  getURL
+};

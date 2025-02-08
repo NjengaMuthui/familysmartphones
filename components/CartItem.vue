@@ -6,7 +6,7 @@
         {{ item_name }}
       </h3>
       <div class="row">
-        <h4>Quantity :{{ quantity }}</h4>
+        <h4>Quantity : 1</h4>
         <button class="remove">Remove</button>
       </div>
     </div>
@@ -16,8 +16,7 @@
 <script setup>
 const props = defineProps({
   image_src: String,
-  item_name: String,
-  quantity: Number
+  item_name: String
 });
 </script>
 

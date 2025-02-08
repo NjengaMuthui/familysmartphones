@@ -1,20 +1,28 @@
 <template>
   <div class="land">
-    <img :src="phone.img" :alt="phone.name" />
+    <img :src="img" :alt="props.Product.name" />
     <div class="info">
       <div class="inner">
         <div class="product-name">
-          {{ phone.name }}
+          {{ props.Product.name }}
         </div>
         <div class="some-info">New in Market</div>
-        <div class="buy">Buy</div>
+        <div @click="viewDetails" class="buy">Buy</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({ phone: Object });
+import { computed } from "vue";
+import { filename } from "~/scripts/useHelper";
+const props = defineProps({ Product: Object });
+const router = useRouter();
+const img = computed(() => filename(props.Product.images.split(",")[0]));
+
+function viewDetails() {
+  router.push(`/product/${props.Product.num}`);
+}
 </script>
 
 <style scoped>

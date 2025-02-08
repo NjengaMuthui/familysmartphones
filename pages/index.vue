@@ -2,25 +2,71 @@
   <div>
     <TopSliding />
     <div class="flex-container">
-      <TopLanding v-for="img in imgs" :phone="img" class="flex-item" />
-      <multipurpose title="Latest Products" :prods="products" />
-      <multipurpose title="Tecno Offers" :prods="products" />
-      <multipurpose title="Samsung Offers" :prods="products" />
-      <multipurpose title="Accessories" :prods="products" />
+      <TopLanding :Product="images[7]" class="flex-item" />
+      <TopLanding :Product="images[4]" class="flex-item" />
+      <MultiPurpose title="Latest Products" :prods="images" />
+      <MultiPurpose title="Tecno Offers" :prods="tecnoPhones" />
+      <MultiPurpose title="Apple Offers" :prods="applePhones" />
+      <MultiPurpose title="Realme" :prods="realmePhones" />
     </div>
   </div>
 </template>
 
 <script setup>
-import multipurpose from "@/components/MultiPurpose.vue";
-import { ref } from "vue";
-import { filename, generateProducts } from "@/scripts/useHelper";
+const client = useSupabaseClient();
 
-const imgs = ref([
-  { name: "Galaxy Fit 3", img: filename("Samsung-Galaxy-Fit-3.jpg") },
-  { name: "Vivo v40", img: filename("images.jpeg") }
-]);
-let products = generateProducts(10);
+const { data: images } = await useAsyncData(
+  "fetchDevices",
+  () =>
+    client
+      .from("devices")
+      .select("*")
+      .not("release_date", "is", null)
+      .order("release_date", { ascending: false })
+      .limit(10),
+  {
+    transform: (result) => result.data
+  }
+);
+const { data: tecnoPhones } = await useAsyncData(
+  "fetchTecno",
+  () =>
+    client
+      .from("devices")
+      .select("*")
+      .ilike("name", "%tecno%")
+      .order("release_date", { ascending: false })
+      .limit(10),
+  {
+    transform: (result) => result.data
+  }
+);
+const { data: applePhones } = await useAsyncData(
+  "fetchApple",
+  () =>
+    client
+      .from("devices")
+      .select("*")
+      .ilike("name", "%Apple%")
+      .order("release_date", { ascending: false })
+      .limit(10),
+  {
+    transform: (result) => result.data
+  }
+);
+const { data: realmePhones } = await useAsyncData(
+  "fetchRealme",
+  () =>
+    client
+      .from("devices")
+      .select("*")
+      .ilike("name", "%realme%")
+      .order("release_date", { ascending: false })
+      .limit(10),
+  {
+    transform: (result) => result.data
+  }
+);
 </script>
 
 <style scoped>
